@@ -1,0 +1,12 @@
+node_modules
+build
+coverage
+.next
+.vscode
+.DS_Store
+.idea
+.eslintcache
+yarn.lock
+package-lock.json
+fit-widget.min.js
+*.log
