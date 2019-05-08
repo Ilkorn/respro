@@ -8,6 +8,7 @@ import Toolbar from '../components/toolbar';
 import { ViewManager } from '../components/view';
 import { getMenu } from '../utils/api';
 import { actions } from '../data/menu';
+import { selectors } from '../data/router';
 
 class MenuPage extends React.Component {
     static async getInitialProps({ req, store }) {
@@ -20,17 +21,18 @@ class MenuPage extends React.Component {
             console.log(e);
         }
 
-        return { };
+        return { menu: selectors.getMenu(store.getState()) };
     }
 
     render() {
-      return (
-        <div style={{height: '100vh'}}>
-            <ViewManager />
-            <Tiles />
-            <Toolbar />
-        </div>
-      )
+        const { menu: isMenuOpen } = this.props;
+        return (
+            <div style={{height: '100vh', overflow: isMenuOpen ? 'hidden' : 'auto' }}>
+                <ViewManager />
+                <Tiles />
+                <Toolbar />
+            </div>
+        );
     }
 }
 

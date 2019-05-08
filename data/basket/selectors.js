@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
-import { compose, map, values, reduce, keys, pick, pickBy } from 'ramda';
+import { compose, map, values, reduce, keys, pick, sum } from 'ramda';
 
 export const getBasketRaw = state => state.basket.items;
 
 export const getBasketCount = createSelector(
     getBasketRaw,
-    (basket) => keys(pickBy(value => !!value, basket)).length
+    (basket) => sum(values(basket))
 );
 
 export const getOrder = createSelector(
