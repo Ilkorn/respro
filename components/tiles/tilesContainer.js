@@ -6,7 +6,8 @@ import { actions as filterActions } from '../../data/filter';
 export default compose(
     connect(
         state => ({
-            isMenuOpen: state.router.menu
+            isMenuOpen: state.router.menu,
+            isFullMenu: state.router.init
         }),
         dispatch => ({
             handleViewFilteredList: (filter) => {
