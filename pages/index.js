@@ -18,7 +18,11 @@ class MenuPage extends React.Component {
             const action = actions.setMenu(menu.data);
             store.dispatch(action);
         } catch(e) {
-            console.log(e);
+            if (e.response) {
+                console.error(e.response.status, e.response.statusText);
+            } else {
+                console.error(e);
+            }
         }
 
         return { menu: selectors.getMenu(store.getState()) };

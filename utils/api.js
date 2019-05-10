@@ -14,7 +14,7 @@ const api = axios.create(baseProfile);
 
 export const getMenu = () => api.get('/items');
 export const postOrder = (payload, token = TEST_TOKEN) => {
-    console.log('object', JSON.stringify(payload));
+    console.log('POST ORDER', JSON.stringify(payload));
     return api.post(`/order/${token}`, JSON.stringify(payload), baseProfile);
 }
 

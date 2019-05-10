@@ -9,7 +9,7 @@ export default {
     radius: {
         m: '8px'
     },
-    fontFamily: 'Futura PT, sans serif',
+    fontFamily: "'FuturaPT', sans serif",
     fontSize: {
         m: '18px'
     },

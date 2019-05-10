@@ -7,7 +7,7 @@ import { selectors } from '../basket';
 export const getMenuRaw = state => state.menu.items;
 export const getMenuGroupRaw = state => state.menu.group;
 
-const extractMenu = (menuGroup, type) => compose(
+const extractMenu = (menuGroup = {}, type) => compose(
     uniq,
     flatten,
     values,
@@ -40,7 +40,6 @@ export const getMenuWithFilter = createSelector(
             dishType = [],
         } = filter;
         const ids = extractMenu(menuGroup, mealType);
-        // console.log('dishType', dishType);
         return compose(
             values,
             pick(ids)
