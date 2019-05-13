@@ -16,8 +16,9 @@ export const BasketWrapper = styled(View)`
     height: 56px;
 
     border-radius: 62px;
-    background-color: ${props => props.theme.color.carrot};
+    background-color: ${props => props.disabled ? props.theme.color.carrotLight : props.theme.color.carrot};
     color: white;
+    pointer-events: ${props => props.disabled ? 'none' : 'auto'};
 `;
 
 const Caption = styled(View)`
@@ -42,14 +43,14 @@ const IconText = styled(Element)`
     align-items: center;
     font-size: 12px;
     border-radius: 50%;
-    border: 2px solid ${props => props.theme.color.carrot};
+    border: 2px solid ${props => props.disabled ? props.theme.color.carrotLight : props.theme.color.carrot};
 `;
 
-export const Basket = ({ itemsCount, handleOpenBasket }) => (
-    <BasketWrapper disabled={!!itemsCount} onClick={() => handleOpenBasket()}>
+export const Basket = ({ itemsCount, disabled, handleOpenBasket }) => (
+    <BasketWrapper disabled={disabled} onClick={() => handleOpenBasket()}>
         <IconWrapper>
             <img src="/static/img/icons/ic-basket.svg" />
-            <IconText>{itemsCount}</IconText>
+            <IconText disabled={disabled}>{itemsCount}</IconText>
         </IconWrapper>
         <Caption>Корзина</Caption>
     </BasketWrapper>

@@ -1,14 +1,21 @@
 
-import React from 'react';
+import React, { createElement } from 'react';
+import { connect } from 'react-redux';
 
 import Tiles from '../components/tiles';
 import Toolbar from '../components/toolbar';
-// import List from '../components/list';
-// import { List } from '../components/view';
 import { ViewManager } from '../components/view';
 import { getMenu } from '../utils/api';
 import { actions } from '../data/menu';
 import { selectors } from '../data/router';
+
+const PageContent = ({ isMenuOpen }) => (
+    <div style={{height: '100vh', overflow: 'auto' }}>
+        <ViewManager />
+        <Tiles />
+        <Toolbar />
+    </div>
+);
 
 class MenuPage extends React.Component {
     static async getInitialProps({ req, store }) {
@@ -29,14 +36,7 @@ class MenuPage extends React.Component {
     }
 
     render() {
-        const { menu: isMenuOpen } = this.props;
-        return (
-            <div style={{height: '100vh', overflow: isMenuOpen ? 'hidden' : 'auto' }}>
-                <ViewManager />
-                <Tiles />
-                <Toolbar />
-            </div>
-        );
+        return <PageContent />;
     }
 }
 

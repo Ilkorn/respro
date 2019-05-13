@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "next",
-        "debug": "NODE_OPTIONS='--inspect' next",
+        "debug": "NODE_OPTIONS='--inspect' API_KEY='bc6b438d4b23492b8b43041f4fe84951' next",
         "build": "next build",
         "start": "next start"
     },

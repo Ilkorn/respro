@@ -71,7 +71,7 @@ export default ({ item, handleAddDish, handleRemoveDish }) => (
                 {item.content}
             </ItemDescription>
             <ControllSection>
-                <ItemAmount>{item.amount}</ItemAmount>
+                <ItemAmount>{item.amount} р.</ItemAmount>
                 <Counter id={item.id} add={handleAddDish} sub={handleRemoveDish} count={item.inBasket} />
             </ControllSection>
         </DescriptionWrapper>

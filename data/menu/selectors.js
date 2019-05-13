@@ -50,19 +50,14 @@ export const getMenuWithFilter = createSelector(
 export const getListFromBasket = createSelector(
     selectors.getBasketRaw,
     getMenuRaw,
-    (isBasket, menu) => {
-        const items = compose(
-            map((value) => {
-                value.inBasket = isBasket[value.id] || 0;
-                return value;
-            }),
-            values,
-            pick(Object.keys(isBasket)),
-            pickBy(value => { console.log('aaaa', value); return !!value;})
-        )(menu);
-        console.log('items', items);
-        return items;
-    }
+    (isBasket, menu) => compose(
+        map((value) => {
+            value.inBasket = isBasket[value.id] || 0;
+            return value;
+        }),
+        values,
+        pick(Object.keys(pickBy(value => !!value, isBasket)))
+    )(menu)
 );
 
 // export default {

@@ -3,6 +3,7 @@ export default {
         black: '#000000',
         white: '#ffffff',
         carrot: '#FC6760',
+        carrotLight: '#FDA4A0',
         grey: '#F5F5F5',
         greyLight: '#808080',
     },

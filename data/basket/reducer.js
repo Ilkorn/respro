@@ -1,4 +1,4 @@
-import { lensPath, set, pathOr, over } from 'ramda';
+import { lensPath, set, compose, pickBy, over } from 'ramda';
 import { types } from './actions'
 
 
@@ -20,14 +20,16 @@ export default (state = initState, action) => {
                 state
             );
         case(types.BASKET_REMOVE):
-            return over(
-            select.items(action.payload),
-                (value = 1) => {
-                    if (value < 1) value = 1;
-                    return (value - 1)
-                },
-                state
-            );
+            return compose(
+                pickBy(value => value),
+                over(
+                    select.items(action.payload),
+                    (value = 1) => {
+                        if (value < 1) value = 1;
+                        return (value - 1)
+                    }
+                )
+            )(state);
         case(types.BASKET_RESET):
         case(types.BASKET_POST):
             return set(select.itemsPure, {}, state)

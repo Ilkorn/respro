@@ -20,6 +20,7 @@ const DefaultState = styled(View)`
     background-color: #EFF1F5;
     border-radius: 24px;
     cursor: pointer;
+    user-select: none;
 `;
 
 const ButtonState = styled(View)`
@@ -37,11 +38,13 @@ const ButtonCircle = styled(View)`
     background-color: #EFF1F5;
     border-radius: 24px;
     cursor: pointer;
+    user-select: none;
 `;
 
 const Counter = styled.span`
     font-family: ${props => props.theme.fontFamily};
     font-size: 24px;
+    user-select: none;
 `;
 
 export default ({ id, count, sub, add }) => (
