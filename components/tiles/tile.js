@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { View } from '../pure';
+import theme from '../../utils/theme';
 
 const Tile = styled(View)`
     display: flex;
@@ -11,8 +12,8 @@ const Tile = styled(View)`
     padding: 16px 0 20px;
     margin: 0 12px 12px 0;
     min-height: 110px;
-    background: ${props => props.theme.color.grey};
-    border-radius: ${props => props.theme.radius.m};
+    background: ${theme.color.grey};
+    border-radius: ${theme.radius.m};
     cursor: pointer;
 `;
 

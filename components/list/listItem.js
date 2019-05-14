@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { View, Title, Element, Description, Counter } from '../pure';
+import theme from '../../utils/theme';
 
 const Wrapper = styled(View)`
     display: flex;
@@ -15,7 +16,7 @@ const DescriptionWrapper = styled(View)`
 `;
 
 const ItemTitle = styled(Title)`
-    font-size: ${props => props.theme.fontSize.m};
+    font-size: ${theme.fontSize.m};
     padding: 5px 0 0;
     max-height: 2.5em;
     overflow: hidden;
@@ -23,15 +24,15 @@ const ItemTitle = styled(Title)`
 `;
 
 const ItemTitleExtra = styled(Element)`
-    font-size: ${props => props.theme.fontSize.m};
-    color: ${props => props.theme.color.greyLight};
+    font-size: ${theme.fontSize.m};
+    color: ${theme.color.greyLight};
     padding-left: 6px;
 `;
 
 const ItemDescription = styled(Description)`
     display: block;
-    font-size: ${props => props.theme.fontSize.m};
-    color: ${props => props.theme.color.greyLight};
+    font-size: ${theme.fontSize.m};
+    color: ${theme.color.greyLight};
     line-height: 22px;
     margin-bottom: 16px;
     overflow: hidden;
@@ -72,7 +73,13 @@ export default ({ item, handleAddDish, handleRemoveDish }) => (
             </ItemDescription>
             <ControllSection>
                 <ItemAmount>{item.amount} р.</ItemAmount>
-                <Counter id={item.id} add={handleAddDish} sub={handleRemoveDish} count={item.inBasket} />
+                <Counter
+                    id={item.id}
+                    add={handleAddDish}
+                    sub={handleRemoveDish}
+                    count={item.inBasket}
+                    availability={item.availability}
+                />
             </ControllSection>
         </DescriptionWrapper>
     </Wrapper>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { View } from '../pure';
 import Tile from './tile';
 import tilesContainer from './tilesContainer';
+import theme from '../../utils/theme';
 
 const MainWrapper = styled(View)`
     position: absolute;
@@ -11,8 +12,8 @@ const MainWrapper = styled(View)`
     bottom: 0;
     height: ${props => props.full ? '87%' : 'auto' };
     min-height: ${props => props.full ? '650px' : '380px' };
-    background-color: ${props => props.theme.color.white};
-    z-index: ${props => props.theme.zIndex.l};
+    background-color: ${theme.color.white};
+    z-index: ${theme.zIndex.l};
 `;
 
 

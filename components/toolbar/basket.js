@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import basketContainer from './basketContainer';
 import { View, Element } from '../pure';
-
+import theme from '../../utils/theme';
 
 export const BasketWrapper = styled(View)`
     position: absolute;
@@ -16,14 +16,14 @@ export const BasketWrapper = styled(View)`
     height: 56px;
 
     border-radius: 62px;
-    background-color: ${props => props.disabled ? props.theme.color.carrotLight : props.theme.color.carrot};
+    background-color: ${props => props.disabled ? theme.color.carrotLight : theme.color.carrot};
     color: white;
     pointer-events: ${props => props.disabled ? 'none' : 'auto'};
 `;
 
 const Caption = styled(View)`
     font-size: 21px;
-    color: ${props => props.theme.color.white};
+    color: ${theme.color.white};
 `;
 
 const IconWrapper = styled(View)`
@@ -31,8 +31,8 @@ const IconWrapper = styled(View)`
 `;
 
 const IconText = styled(Element)`
-    background: ${props => props.theme.color.white};
-    color: ${props => props.theme.color.carrot};
+    background: ${theme.color.white};
+    color: ${theme.color.carrot};
     position: absolute;
     right: -4px;
     top: -4px;
@@ -43,7 +43,7 @@ const IconText = styled(Element)`
     align-items: center;
     font-size: 12px;
     border-radius: 50%;
-    border: 2px solid ${props => props.disabled ? props.theme.color.carrotLight : props.theme.color.carrot};
+    border: 2px solid ${props => props.disabled ? theme.color.carrotLight : theme.color.carrot};
 `;
 
 export const Basket = ({ itemsCount, disabled, handleOpenBasket }) => (

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
+import theme from '../../utils/theme';
+
 const View = styled.div`
-    font-family: ${props => props.theme.fontFamily};
-    font-size: ${props => props.theme.fontSize.m};
+    font-family: ${theme.fontFamily};
+    font-size: ${theme.fontSize.m};
     box-sizing: border-box;
 `;
 
@@ -42,17 +44,17 @@ const ButtonCircle = styled(View)`
 `;
 
 const Counter = styled.span`
-    font-family: ${props => props.theme.fontFamily};
+    font-family: ${theme.fontFamily};
     font-size: 24px;
     user-select: none;
 `;
 
-export default ({ id, count, sub, add }) => (
-    <Wrapper>
-        {
-            !count
-            ? <DefaultState onClick={() => add(id)}>В корзину</DefaultState>
-            : (
+const getButtonState = ({ id, count, sub, add, availability = true }) => {
+    if (availability) {
+        if (!count) {
+            return (<DefaultState onClick={() => add(id)}>В корзину</DefaultState>);
+        } else {
+            return (
                 <ButtonState>
                     <ButtonCircle onClick={() => sub(id)}>
                         <img src="/static/img/icons/ic-minus-32.svg" />
@@ -62,7 +64,15 @@ export default ({ id, count, sub, add }) => (
                         <img src="/static/img/icons/ic-plus-32.svg" />
                     </ButtonCircle>
                 </ButtonState>
-            )
+            );
         }
+    } else {
+        return (<DefaultState>Нет в наличии</DefaultState>);
+    }
+};
+
+export default (props) => (
+    <Wrapper>
+        {getButtonState(props)}
     </Wrapper>
 );

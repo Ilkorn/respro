@@ -4,6 +4,7 @@ import { View } from '../pure'
 import { default as Basket } from './basket';
 import { default as Checkout } from './checkout';
 import toolbarContainer from './toolbarContainer';
+import theme from '../../utils/theme';
 
 const ToolbarWrapper = styled(View)`
     position: fixed;
@@ -15,9 +16,9 @@ const ToolbarWrapper = styled(View)`
     right: 0;
     height: 56px;
     padding: 0 20px;
-    background-color: ${props => props.theme.color.white};
+    background-color: ${theme.color.white};
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
-    z-index: ${props => props.theme.zIndex.xl};
+    z-index: ${theme.zIndex.xl};
 `;
 
 export const Toolbar = ({ viewName, handleToggleMenu }) => (
