@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
-import { pick, values, flatten, uniq, compose, map, pickBy } from 'ramda';
+import { pick, values, flatten, uniq, compose, map, pickBy, take } from 'ramda';
 
 import { selectors as filterSelectors } from '../filter';
+import { selectors as routerSelector } from '../router';
 import { selectors } from '../basket';
 
 export const getMenuRaw = state => state.menu.items;
@@ -34,16 +35,20 @@ export const getMenuWithFilter = createSelector(
     getMenuWithCounter,
     getMenuGroupRaw,
     filterSelectors.getFilter,
-    (menu, menuGroup, filter) => {
+    routerSelector.getMenuInitRaw,
+    (menu, menuGroup, filter, notInit) => {
         const {
             mealType = [],
             dishType = [],
         } = filter;
         const ids = extractMenu(menuGroup, mealType);
-        return compose(
+        const result = compose(
             values,
             pick(ids)
         )(menu);
+        if (notInit) return take(1, result);
+        return result;
+
     }
 );
 

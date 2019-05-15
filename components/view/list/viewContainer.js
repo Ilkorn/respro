@@ -4,10 +4,15 @@ import { selectors } from '../../../data/filter';
 
 const dict = {
     title: {
-        '#breakfast': 'Завтрак'
+        '#breakfast': 'Завтрак',
+        '#lunch': 'Обед',
+        '#dinner': 'Ужин',
+        '#dessert': 'Десерт',
+        '#drinks': 'Напитки'
     },
     description: {
-        '#breakfast': 'Будни с 8:00 до 11:30'
+        '#breakfast': 'Будни с 8:00 до 11:30',
+        '#lunch': 'Обеды в будни с12 до 16:30'
     }
 };
 
