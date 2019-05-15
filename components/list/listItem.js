@@ -16,12 +16,10 @@ const DescriptionWrapper = styled(View)`
 `;
 
 const ItemTitle = styled(Title)`
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
     font-size: ${theme.fontSize.m};
     padding: 5px 0 0;
-    max-height: 2.5em;
-    overflow: hidden;
     margin-bottom: 16px;
 `;
 
@@ -30,6 +28,7 @@ const ItemTitleExtra = styled(Element)`
     color: ${theme.color.greyLight};
     padding-left: 6px;
     font-weight: lighter;
+    white-space: nowrap;
 `;
 
 const ItemDescription = styled(Description)`
@@ -70,22 +69,24 @@ export default ({ item, handleAddDish, handleRemoveDish }) => (
             <ItemTitle>
                 <span>{item.name}</span>
                 <ItemTitleExtra>{item.exit} г.</ItemTitleExtra>
-                <span>
-                    {
-                        item.isVegan &&
-                        <img
-                            src="/static/img/icons/ic-veg.svg"
-                            alt="vegan food logo"
-                        />
-                    }
-                    {
-                        item.isSpicy &&
-                        <img
-                            src="/static/img/icons/ic-spicy.svg"
-                            alt="spicy food logo"
+                <span style={{position: "relative"}}>
+                    <span style={{position: 'absolute', top: 0}}>
+                        {
+                            item.isVegan &&
+                            <img
+                                src="/static/img/icons/ic-veg.svg"
+                                alt="vegan food logo"
+                            />
+                        }
+                        {
+                            item.isSpicy &&
+                            <img
+                                src="/static/img/icons/ic-spicy.svg"
+                                alt="spicy food logo"
 
-                        />
-                    }
+                            />
+                        }
+                    </span>
                 </span>
 
             </ItemTitle>
